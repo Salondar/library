@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>Library</h1>
+
     <dialog id="modal">
         <form method="dialog">
             <p>
@@ -29,10 +30,15 @@
                     <option value="not read">not read</option>
                 </select>
             </p>
-            <button type="submit" id="close-modal" formmethod="dialog">Add Book</button>
+            <p>
+                <button id="cancelBtn" formmethod="dialog">cancel</button>
+                <button type="submit" id="close-modal" formmethod="dialog">Add Book</button>
+            </p>
         </form>
     </dialog>
+
     <button id="open-modal">New Book</button>
+
     <table>
         <th>Title</th>
         <th>Author</th>
