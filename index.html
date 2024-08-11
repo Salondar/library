@@ -11,12 +11,24 @@
     <h1>Library</h1>
     <dialog id="modal">
         <form method="dialog">
-            <label for="title">Title: </label>
-            <input type="text" id="title" name="title" required>
-            <label for="author">Author: </label>
-            <input type="text" id="author" name="author" required>
-            <label for="pages">Pages: </label>
-            <input type="number" id="pages" name="pages" required>
+            <p>
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title" required>
+            </p>
+            <p>
+                <label for="author">Author: </label>
+                <input type="text" id="author" name="author" required>
+            </p>
+            <p>
+                <label for="pages">Pages: </label>
+                <input type="number" id="pages" name="pages" required>
+            </p>
+            <p>
+                <select name="status" id="status">
+                    <option value="read">read</option>
+                    <option value="not read">not read</option>
+                </select>
+            </p>
             <button type="submit" id="close-modal" formmethod="dialog">Add Book</button>
         </form>
     </dialog>
