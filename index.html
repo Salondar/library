@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>Library</h1>
-    <button class="open-modal">Add book</button>
     <dialog id="modal">
         <form method="dialog">
             <label for="title">Title: </label>
@@ -18,10 +17,10 @@
             <input type="text" id="author" name="author" required>
             <label for="pages">Pages: </label>
             <input type="number" id="pages" name="pages" required>
-            <button type="submit" id="close-modal"></button>
+            <button type="submit" id="close-modal" formmethod="dialog">Add Book</button>
         </form>
     </dialog>
-
+    <button id="open-modal">New Book</button>
     <table>
         <th>Title</th>
         <th>Author</th>
