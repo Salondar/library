@@ -1,7 +1,12 @@
-let title;
-let author;
-let pages;
-let status;
+const modal = document.querySelector('#modal');
+
+const title = modal.querySelector('#title');
+const author  = modal.querySelector('#author');
+const pageCount = modal.querySelector('#pages');
+const bookStatus = modal.querySelector('select');
+const addBookBtn = modal.querySelector('#addBook');
+const openModal = document.querySelector('#open-modal');
+
 const table = document.querySelector('table');
 
 
@@ -52,5 +57,18 @@ function displayOnPage() {
     }   
 }
 
-displayOnPage();
+openModal.addEventListener('click', ()=> {
+    modal.showModal();
+});
 
+addBookBtn.addEventListener('click', (event)=> {
+    event.preventDefault();
+    let newTitle = title.value;
+    let newAuthor = author.value;
+    let newPageCount = pageCount.value;
+    let newStatus = bookStatus.value;
+    const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
+    addToLibrary(newBook)
+    displayOnPage();
+    modal.close();
+});
