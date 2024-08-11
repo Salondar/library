@@ -7,7 +7,7 @@ const bookStatus = modal.querySelector('select');
 const addBookBtn = modal.querySelector('#addBook');
 const openModal = document.querySelector('#open-modal');
 
-const table = document.querySelector('table');
+const tableBody = document.querySelector('tbody');
 
 
 const myLibrary = [{title:"A Song of Ice and Fire", author:"G.R.R Martin", pages:578, status: "not read"},
@@ -32,7 +32,7 @@ let row, rowData, statusBtn, removeBtn;
 function displayOnPage() {
     for (let obj of myLibrary) {
         row = document.createElement('tr');
-        table.appendChild(row);
+        tableBody.appendChild(row);
         for (let key in obj) {
             rowData = document.createElement('td'); 
             if (key === 'status') {
@@ -69,6 +69,10 @@ addBookBtn.addEventListener('click', (event)=> {
     let newStatus = bookStatus.value;
     const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
     addToLibrary(newBook)
-    displayOnPage();
     modal.close();
+});
+
+modal.addEventListener('close', ()=> {
+    tableBody.innerHTML = '';
+    displayOnPage();
 });
