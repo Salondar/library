@@ -1,5 +1,5 @@
 const modal = document.querySelector('#modal');
-
+const form = document.querySelector('form');
 const title = modal.querySelector('#title');
 const author  = modal.querySelector('#author');
 const pageCount = modal.querySelector('#pages');
@@ -68,6 +68,7 @@ function displayOnPage() {
 }
 
 openModal.addEventListener('click', ()=> {
+    form.reset();
     modal.showModal();
 });
 
