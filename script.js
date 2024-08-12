@@ -30,8 +30,10 @@ function addToLibrary(book) {
 
 let row, rowData, statusBtn, removeBtn;
 function displayOnPage() {
+    let index = 0;
     for (let obj of myLibrary) {
         row = document.createElement('tr');
+        row.setAttribute('data-index', index);
         tableBody.appendChild(row);
         for (let key in obj) {
             rowData = document.createElement('td'); 
@@ -54,6 +56,7 @@ function displayOnPage() {
         rowData.appendChild(removeBtn);
         
         row.appendChild(rowData);
+        index++;
     }   
 }
 
