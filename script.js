@@ -88,16 +88,16 @@ modal.addEventListener('close', ()=> {
 });
 
 tableBody.addEventListener('click', (event)=> {
-    if (event.target.id === 'removeBtn') {
-        const index  = Number(event.target.dataset.index);
-        myLibrary.splice(index, 1);
-        tableBody.innerHTML = '';
-        displayOnPage();
-    }
-    else if (event.target.id === 'statusBtn') {
-        const index =  Number(event.target.dataset.index);
-        const book = myLibrary[index];
-        book.changeStatus();
+    const target = event.target;
+    if (target.id === 'removeBtn' || target.id === 'statusBtn') {
+        const bookIndex = Number(target.dataset.index);
+        if (target.id === 'removeBtn') {
+            myLibrary.splice(bookIndex, 1);
+        }
+        else if (target.id === 'statusBtn') {
+            const book = myLibrary[bookIndex];
+            book.changeStatus();
+        }
         tableBody.innerHTML = '';
         displayOnPage();
     }
