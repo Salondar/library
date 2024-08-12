@@ -9,12 +9,7 @@ const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
 
-
-const myLibrary = [{title:"A Song of Ice and Fire", author:"G.R.R Martin", pages:578, status: "not read"},
-    {title:"Ualalapi", author:"Ungulani Bha Kha Khossa", pages:378, status: "read"},
-    {title:"The Lord Of The Rings", author:"J.R.R Tolkien", pages:778, status: "not read"},
-    {title:"The Three Body Problem", author:"Cixin Liu", pages:302, status: "read"}
-];
+const myLibrary = [];
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -23,33 +18,45 @@ function Book(title, author, pages, status) {
     this.status = status;
 }
 
+Book.prototype.changeStatus = function() {
+    if (this.status === 'read') {
+        this.status = 'not read';
+    }
+    else {
+        this.status = 'read';
+    }
+};
+
 function addToLibrary(book) {
     myLibrary.push(book);
 }
-
 
 let row, rowData, statusBtn, removeBtn;
 function displayOnPage() {
     let index = 0;
     for (let obj of myLibrary) {
         row = document.createElement('tr');
-        row.setAttribute('data-index', index);
         tableBody.appendChild(row);
         for (let key in obj) {
-            rowData = document.createElement('td'); 
-            if (key === 'status') {
-                statusBtn = document.createElement('button');
-                statusBtn.textContent = obj[key];
-                rowData.appendChild(statusBtn);
-                
+            if (obj.hasOwnProperty(key)) {
+                    rowData = document.createElement('td'); 
+                if (key === 'status') {
+                    statusBtn = document.createElement('button');
+                    statusBtn.setAttribute('id', 'statusBtn');
+                    statusBtn.setAttribute('data-index', index);
+                    statusBtn.textContent = obj[key];
+                    rowData.appendChild(statusBtn);
+                    
+                }
+                else {
+                    rowData.textContent = obj[key];
+                }
+                row.appendChild(rowData);
             }
-            else {
-                rowData.textContent = obj[key];
-            }
-            row.appendChild(rowData);
         }
-
         removeBtn = document.createElement('button');
+        removeBtn.setAttribute('id', 'removeBtn');
+        removeBtn.setAttribute('data-index', index);
         removeBtn.textContent = 'remove';
 
         rowData = document.createElement('td');
@@ -78,4 +85,20 @@ addBookBtn.addEventListener('click', (event)=> {
 modal.addEventListener('close', ()=> {
     tableBody.innerHTML = '';
     displayOnPage();
+});
+
+tableBody.addEventListener('click', (event)=> {
+    if (event.target.id === 'removeBtn') {
+        const index  = Number(event.target.dataset.index);
+        myLibrary.splice(index, 1);
+        tableBody.innerHTML = '';
+        displayOnPage();
+    }
+    else if (event.target.id === 'statusBtn') {
+        const index =  Number(event.target.dataset.index);
+        const book = myLibrary[index];
+        book.changeStatus();
+        tableBody.innerHTML = '';
+        displayOnPage();
+    }
 });
