@@ -128,5 +128,6 @@ tr {
 }
 
 th, td {
+    padding: 10px 0;
     text-align: left;
 }
