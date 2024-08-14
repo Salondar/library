@@ -41,7 +41,7 @@ button {
 #open-modal,
 button[type="submit"],
 #statusBtn {
-  background-color:#1EAEDB;
+  background-color:rgb(30, 174, 219);
   border-color:  #43c0e7;
 }
 #open-modal {
@@ -51,7 +51,18 @@ button[type="submit"],
 #cancelBtn,
 #removeBtn {
     background-color: rgb(228, 26, 103);
-    border-color: rgb(228, 26, 103);
+    border: none
+}
+
+#cancelBtn:hover,
+#removeBtn:hover {
+    background-color: rgb(178, 33, 91);
+}
+
+#addBook:hover,
+#statusBtn:hover,
+#open-modal:hover {
+    background-color: rgb(25, 138, 173);;
 }
 
 #cancelBtn,
