@@ -134,7 +134,7 @@ table {
 
 tr {
     padding: 10px 0;
-    border-bottom: 1px solid #E1E1E1;
+    border-bottom: 1px solid  #E1E1E1;
     display: grid;
     grid-template-columns: 310px 250px 130px 130px 130px ;
     gap: 10px
