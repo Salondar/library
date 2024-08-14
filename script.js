@@ -9,9 +9,7 @@ const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
 
-const myLibrary = [{title: "The Hobbit", author: "JRR Tolkien", pages: 800, status: "read"},
-                   {title: "A Song Of Ice And Fire", author: "GRR Martin", pages: 900, status: "not read"}
-];
+let myLibrary = [];
 
 function Book(title, author, pages, status) {
     this.title = title;
