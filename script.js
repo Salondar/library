@@ -70,19 +70,48 @@ function displayOnPage() {
 displayOnPage();
 
 openModal.addEventListener('click', ()=> {
-    form.reset();
+    form.reset(); /* Clear form */
     modal.showModal();
 });
 
+const titleMsg = document.querySelector("#title-warning-msg")
+const  authorMsg = document.querySelector("#author-warning-msg")
+const pagesMsg = document.querySelector("#pages-warning-msg")
 addBookBtn.addEventListener('click', (event)=> {
-    event.preventDefault();
-    let newTitle = title.value;
-    let newAuthor = author.value;
-    let newPageCount = pageCount.value;
-    let newStatus = bookStatus.value;
-    const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
-    addToLibrary(newBook)
-    modal.close();
+    titleMsg.textContent = "";
+    authorMsg.textContent = "";
+    pagesMsg.textContent = "";
+
+    let newTitle, newAuthor, newPageCount, newStatus;
+    if (title.checkValidity()) {
+        newTitle = title.value;
+
+    }
+    else {
+        titleMsg.textContent =  "Please enter a book title";
+    }
+
+    if (author.checkValidity()) {
+        newAuthor = author.value;
+    }
+    else {
+        authorMsg.textContent = "Please enter an author name";
+    }
+
+    if (pageCount.checkValidity()) {
+        newPageCount = pageCount.value;
+    }
+    else {
+        pagesMsg.textContent = "Please enter the number of pages"
+    }
+
+    newStatus = bookStatus.value;
+    
+    if (form.checkValidity()) {
+        const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
+        addToLibrary(newBook);
+        modal.close();
+    }
 });
 
 modal.addEventListener('close', ()=> {
