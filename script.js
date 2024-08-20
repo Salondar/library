@@ -70,44 +70,29 @@ function displayOnPage() {
 displayOnPage();
 
 openModal.addEventListener('click', ()=> {
-    form.reset(); /* Clear form */
+    form.reset();
     modal.showModal();
 });
 
-const titleMsg = document.querySelector("#title-warning-msg")
-const  authorMsg = document.querySelector("#author-warning-msg")
-const pagesMsg = document.querySelector("#pages-warning-msg")
 addBookBtn.addEventListener('click', (event)=> {
-    titleMsg.textContent = "";
-    authorMsg.textContent = "";
-    pagesMsg.textContent = "";
-
+    event.preventDefault();
     let newTitle, newAuthor, newPageCount, newStatus;
-    if (title.checkValidity()) {
+
+    if (title.checkValidity() === false) {
+        title.placeholder = "Enter a valid book title";
+
+    }
+    else if (author.checkValidity() === false) {
+        author.placeholder = "Enter an author name";
+    }
+    else if (pageCount.checkValidity() === false) {
+        pageCount.placeholder = "Number of pages";
+    }
+    else {
         newTitle = title.value;
-
-    }
-    else {
-        titleMsg.textContent =  "Please enter a book title";
-    }
-
-    if (author.checkValidity()) {
         newAuthor = author.value;
-    }
-    else {
-        authorMsg.textContent = "Please enter an author name";
-    }
-
-    if (pageCount.checkValidity()) {
         newPageCount = pageCount.value;
-    }
-    else {
-        pagesMsg.textContent = "Please enter the number of pages"
-    }
-
-    newStatus = bookStatus.value;
-    
-    if (form.checkValidity()) {
+        newStatus = bookStatus.value;
         const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
         addToLibrary(newBook);
         modal.close();
@@ -123,10 +108,10 @@ tableBody.addEventListener('click', (event)=> {
     const target = event.target;
     if (target.id === 'removeBtn' || target.id === 'statusBtn') {
         const bookIndex = Number(target.dataset.index);
-        if (target.id === 'removeBtn') {
+        if (target.id === 'removeBtn') {      // Remove a book
             myLibrary.splice(bookIndex, 1);
         }
-        else if (target.id === 'statusBtn') {
+        else if (target.id === 'statusBtn') {  // Change the read status
             const book = myLibrary[bookIndex];
             book.changeStatus();
         }
