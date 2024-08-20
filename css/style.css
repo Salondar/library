@@ -125,17 +125,13 @@ input:hover {
     background-color: hsl(202, 15%, 71%, .3);
 }
 
-input:invalid {
-    border: 2px solid red;
-}
-
 input:valid {
     border: 2px solid rgb(30, 174, 219);
 }
 
 select,
 input[type="number"]{
-    width: 40%;
+    width: 100%;
 }
 
 .form-buttons {
