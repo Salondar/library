@@ -5,6 +5,7 @@ const author  = modal.querySelector('#author');
 const pageCount = modal.querySelector('#pages');
 const bookStatus = modal.querySelector('select');
 const addBookBtn = modal.querySelector('#addBook');
+const cancelBtn = modal.querySelector('#cancelBtn');
 const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
@@ -80,13 +81,14 @@ addBookBtn.addEventListener('click', (event)=> {
 
     if (title.checkValidity() === false) {
         title.placeholder = "Enter a valid book title";
+        title.style.borderColor = "red";
 
     }
     else if (author.checkValidity() === false) {
         author.placeholder = "Enter an author name";
     }
     else if (pageCount.checkValidity() === false) {
-        pageCount.placeholder = "Number of pages";
+        pageCount.placeholder = "Enter the number of pages the book has";
     }
     else {
         newTitle = title.value;
@@ -97,6 +99,18 @@ addBookBtn.addEventListener('click', (event)=> {
         addToLibrary(newBook);
         modal.close();
     }
+});
+
+cancelBtn.addEventListener('click', (event)=> {
+    // Remove the invalid border color
+    title.style.borderColor = "black";
+    author.style.borderColor = "black";
+    pageCount.style.borderColor = "black";
+
+    // Remove the invalid placeholder text
+    title.placeholder = "";
+    author.placeholder = "";
+    pageCount.placeholder = "";
 });
 
 modal.addEventListener('close', ()=> {
