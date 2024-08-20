@@ -12,6 +12,7 @@ const tableBody = document.querySelector('tbody');
 
 let myLibrary = [];
 
+// Book constructor
 function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
@@ -40,17 +41,27 @@ function displayOnPage() {
         tableBody.appendChild(row);
         for (let key in obj) {
             if (obj.hasOwnProperty(key)) {
-                    rowData = document.createElement('td'); 
-                if (key === 'status') {
+                    rowData = document.createElement('td');
+                if (key === 'title') {
+                    rowData.setAttribute('data-label', 'Title');
+                    rowData.textContent = obj[key];
+                }
+                else if (key === 'author') {
+                    rowData.setAttribute('data-label', 'Author');
+                    rowData.textContent = obj[key];
+                }
+                else if (key === 'pages') {
+                    rowData.setAttribute('data-label', 'Pages');
+                    rowData.textContent = obj[key];
+                }
+                else if (key === 'status') {
                     statusBtn = document.createElement('button');
                     statusBtn.setAttribute('id', 'statusBtn');
                     statusBtn.setAttribute('data-index', index);
                     statusBtn.textContent = obj[key];
                     rowData.appendChild(statusBtn);
-                    
-                }
-                else {
-                    rowData.textContent = obj[key];
+
+                    rowData.setAttribute('data-label', 'Status');
                 }
                 row.appendChild(rowData);
             }
@@ -61,6 +72,8 @@ function displayOnPage() {
         removeBtn.textContent = 'remove';
 
         rowData = document.createElement('td');
+
+        rowData.setAttribute('data-label','Remove');
         rowData.appendChild(removeBtn);
         
         row.appendChild(rowData);
