@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     margin-top: .5em;
     margin-bottom: 1.5em;
     font-weight: 400;
@@ -64,4 +64,31 @@ p {
 .form-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+table thead {
+    clip-path: rect(0 0 0 0);
+}
+
+table tr {
+    border-bottom: 2px solid black;
+    display: block;
+    margin-bottom: 0.9em;
+}
+
+table td {
+    display: block;
+    text-align: right;
+}
+
+table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
 }
