@@ -87,7 +87,6 @@ table tr {
     border-bottom: 3px solid black;
     display: block;
     margin-bottom: 0.9em;
-    overflow: visible;
 }
 
 table td {
