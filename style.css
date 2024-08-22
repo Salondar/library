@@ -1,110 +1,81 @@
-/* Resets*/
 * {
     padding: 0;
     margin: 0;
 }
-/* Reset End*/
-
 
 body {
-    width: 90vw;
     font-family: "Lato";
-    font-weight: 300;
-    font-size: 1.25rem;
-    padding: 1em;
-    line-height: 1.25;
+    font-size: 100%;
+    margin: 2em 2vw;
+    padding: 2em 2vw;
 }
 
 h1 {
-    font-size: 1.7rem;
-    margin-top: .5em;
     margin-bottom: 1.5em;
-    font-weight: 400;
-}
-
-button {
-    text-transform: uppercase;
-    width: 150px;;
-    padding: 1em;
-    border-radius: 20px;
-    border: none;
-    background-color: rgb(30, 174,219);
-}
-
-
-#open-modal:hover,
-#open-modal:focus {
-    background-color: rgb(25, 138, 173);
-}
-
-
-dialog {
-    border-radius: 10px;
-    border: 1px solid black;
-}
-
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-form {
-    width: 80%;
-    padding: 1.5em;
-}
-
-input,
-select {
-    width: 100%;
-    border-radius: 20px;
-    font-size: 1.1rem;
-    padding: .5em;
-}
-
-p {
-    margin-bottom: 1.5em;
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
+    font-weight: 300;
 }
 
 table {
-    width: 100%;
-    table-layout: fixed;
+    margin: 1em 0;
     border-collapse: collapse;
-    border: 0;
 }
 
-table thead {
-    clip-path: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
+caption {
+    padding-left: 0.5em;
+    text-align: left;
+    margin-bottom: 1em;
 }
 
-table tr {
-    border-bottom: 3px solid black;
-    display: block;
-    margin-bottom: 0.9em;
+th,
+td {
+    padding: 0.25em .5em 0.25em 1em;
+    text-align: left;
+    text-indent: -0.5em;
+    vertical-align: text-top;
 }
 
-table td {
-    padding: 0.3em;
-    border-bottom: 1px solid black;
-    display: block;
+th:nth-of-type(3)
+td:nth-of-type(3) {
     text-align: right;
-    font-size: 1rem;
-    width: 30%;
 }
 
-table td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
+
+button {
+    height: 3em;
+    width: 10em;
+    border-radius: 2em;
     text-transform: uppercase;
+    border: none;
+    background-color: red;
+    color: white;
 }
 
-table td:last-child {
-    border: 0;
+#open-modal {
+    margin-bottom: 2em;
+    margin-left: 0.5em;
+}
+
+@media (max-width: 20em) {
+
+    table,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead,
+    th {
+        display: none;
+    }
+
+    td {
+        padding:  0.5em .5em 0.5em .25em;
+        display: grid;
+        grid-template-columns: 4em auto;
+        grid-gap: 1em
+    }
+
+    td::before {
+        content: attr(data-label);
+    }
 }
