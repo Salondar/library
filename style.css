@@ -51,8 +51,38 @@ button {
     border-radius: 2em;
     text-transform: uppercase;
     border: none;
-    background-color: red;
+    background-color: #007BFF;
     color: white;
+}
+
+#removeBtn {
+    background-color: #d64a4a;
+}
+
+#removeBtn:hover,
+#removeBtn:focus{
+    background-color: #a83636;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#cancelBtn {
+    background-color: #6C757D;
+}
+
+#cancelBtn:hover,
+#cancelBtn:focus {
+    background-color: #565e64;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#open-modal:hover,
+#addBook:hover,
+#statusBtn:hover,
+#open-modal:focus,
+#addBook:focus,
+#statusBtn:focus {
+    background-color: #0069d9;
+    transition: background-color 0.2s ease-in-out;
 }
 
 #open-modal {
@@ -60,12 +90,14 @@ button {
     margin-left: 0.5em;
 }
 
+
+
 @media (max-width: 37em) {
-    
+
     caption {
         font-weight: bold;
     }
-
+    
     table,
     td,
     tr {
@@ -78,7 +110,7 @@ button {
     }
 
     td {
-        padding:  0.8em .5em 0.8em .25em;
+        padding:  0.8em .5em 0.8em 0;
         display: grid;
         grid-template-columns: 4em auto;
         grid-gap: 1em
@@ -87,8 +119,9 @@ button {
     td:nth-of-type(3) {
         text-align: left;
     }
-    
+
     td::before {
+        margin-left: 0.8em;
         text-align: left;
         content: attr(data-label);
         font-weight: bold;
