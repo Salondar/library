@@ -91,8 +91,6 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     displayOnPage();
 });
 
-
-
 openModal.addEventListener('click', ()=> {
     form.reset();
     modal.showModal();
