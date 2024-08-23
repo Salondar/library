@@ -34,11 +34,16 @@ td {
     vertical-align: text-top;
 }
 
-th:nth-of-type(3)
+tr {
+    border-bottom: 1px solid #B0BEC5;
+}
+
+th:nth-of-type(3),
+th:nth-of-type(4),
+th:nth-of-type(5),
 td:nth-of-type(3) {
     text-align: right;
 }
-
 
 button {
     height: 3em;
@@ -56,6 +61,10 @@ button {
 }
 
 @media (max-width: 37em) {
+    
+    caption {
+        font-weight: bold;
+    }
 
     table,
     td,
@@ -69,13 +78,19 @@ button {
     }
 
     td {
-        padding:  0.5em .5em 0.5em .25em;
+        padding:  0.8em .5em 0.8em .25em;
         display: grid;
         grid-template-columns: 4em auto;
         grid-gap: 1em
     }
 
+    td:nth-of-type(3) {
+        text-align: left;
+    }
+    
     td::before {
+        text-align: left;
         content: attr(data-label);
+        font-weight: bold;
     }
 }
