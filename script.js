@@ -10,7 +10,7 @@ const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
 
-let myLibrary = [];
+let myLibrary = [{title: "The Posthumous Memoirs of Brás Cubas", author: "Machado de Assis", pages: 238, status: "read"}];
 
 // Book constructor
 function Book(title, author, pages, status) {
