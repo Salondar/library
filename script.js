@@ -10,7 +10,7 @@ const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
 
-let myLibrary = [{title: "The Posthumous Memoirs of Brás Cubas", author: "Machado de Assis", pages: 238, status: "read"}];
+let myLibrary = [];
 
 // Book constructor
 function Book(title, author, pages, status) {
@@ -81,7 +81,17 @@ function displayOnPage() {
     }   
 }
 
-displayOnPage();
+window.addEventListener("DOMContentLoaded", (event)=>{
+    let defaultTitle = "The Posthumous Memoirs of Brás Cubas";
+    let defaultAuthor = "Machado de Assis";
+    let defaultPages = 238;
+    let defaultStatus = "read";
+    let defaultBook = new Book(defaultTitle, defaultAuthor, defaultPages, defaultStatus);
+    myLibrary.push(defaultBook);
+    displayOnPage();
+});
+
+
 
 openModal.addEventListener('click', ()=> {
     form.reset();
