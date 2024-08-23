@@ -96,20 +96,27 @@ openModal.addEventListener('click', ()=> {
     modal.showModal();
 });
 
+
 addBookBtn.addEventListener('click', (event)=> {
     event.preventDefault();
+    title.style.borderColor = "black";
+    author.style.borderColor = "black";
+    pageCount.style.borderColor = "black";
+
     let newTitle, newAuthor, newPageCount, newStatus;
-
-    if (title.checkValidity() === false) {
-        title.placeholder = "Enter a valid book title";
-        title.style.borderColor = "red";
-
-    }
-    else if (author.checkValidity() === false) {
-        author.placeholder = "Enter an author name";
-    }
-    else if (pageCount.checkValidity() === false) {
-        pageCount.placeholder = "Enter the number of pages the book has";
+    if (form.checkValidity() === false) {
+        if (title.checkValidity() === false) {
+            title.placeholder = "Enter book title";
+            title.style.borderColor = "red";
+        }
+        else if (author.checkValidity() === false) {
+            author.placeholder = "Enter an author name";
+            author.style.borderColor = "red";
+        }
+        else if (pageCount.checkValidity() === false) {
+            pageCount.placeholder = "Enter the number of pages";
+            pageCount.style.borderColor = "red";
+        }
     }
     else {
         newTitle = title.value;
@@ -134,19 +141,21 @@ cancelBtn.addEventListener('click', (event)=> {
     pageCount.placeholder = "";
 });
 
+// Close modal
 modal.addEventListener('close', ()=> {
     tableBody.innerHTML = '';
     displayOnPage();
 });
 
+// Change status or remove a book
 tableBody.addEventListener('click', (event)=> {
     const target = event.target;
     if (target.id === 'removeBtn' || target.id === 'statusBtn') {
         const bookIndex = Number(target.dataset.index);
-        if (target.id === 'removeBtn') {      // Remove a book
+        if (target.id === 'removeBtn') {      // Remove book
             myLibrary.splice(bookIndex, 1);
         }
-        else if (target.id === 'statusBtn') {  // Change the read status
+        else if (target.id === 'statusBtn') {  // Change read status
             const book = myLibrary[bookIndex];
             book.changeStatus();
         }
