@@ -26,12 +26,16 @@
                 <label for="pages">Pages: </label>
                 <input type="number" id="pages" name="pages" required>
             </p>
-            <p>
-                <select name="status" id="status">
-                    <option value="read">read</option>
-                    <option value="not read">not read</option>
-                </select>
-            </p>
+            <fieldset>
+                <div>
+                    <input type="radio" value="read" id="status1" name="status" checked>
+                    <label for="status1">Read</label>
+                </div>
+                <div>
+                    <input type="radio" value="not read" id="status2" name="status">
+                    <label for="status2">Not Read</label>
+                </div>
+            </fieldset>
             <button type="submit" id="addBook">Add Book</button>
             <button id="cancelBtn" formnovalidate>cancel</button>
         </form>
