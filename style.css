@@ -88,10 +88,6 @@ input[type="number"] {
     color: #c00;
 }
 
-.invalid input[type="text"] {
-    border-color: #c00;
-}
-
 /* Table styles */
 table {
     margin: 1em 0;
