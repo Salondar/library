@@ -146,7 +146,7 @@ addBookBtn.addEventListener('click', (event)=> {
         newTitle = title.value;
         newAuthor = author.value;
         newPageCount = pageCount.value;
-        newStatus = bookStatus.value;
+        newStatus = modal.querySelector("input[name= status]:checked").value;
         const newBook = new Book(newTitle, newAuthor, newPageCount, newStatus);
         addToLibrary(newBook);
         modal.close();
