@@ -3,12 +3,22 @@ const form = document.querySelector('form');
 const title = modal.querySelector('#title');
 const author  = modal.querySelector('#author');
 const pageCount = modal.querySelector('#pages');
-const bookStatus = modal.querySelector('select');
 const addBookBtn = modal.querySelector('#addBook');
 const cancelBtn = modal.querySelector('#cancelBtn');
 const openModal = document.querySelector('#open-modal');
 
 const tableBody = document.querySelector('tbody');
+
+const DEFAULT_BOOKS = [{title: "The Posthumous Memoirs of Brás Cubas", 
+                        author: "Machado de Assis",
+                        pages: 238, status: "read"},
+                        {title: "The Three Body Problem", 
+                        author: "Liu Cixin",
+                        pages: 302, status: "read"},
+                        {title: " Also sprach Zarathustra: Ein Buch für Alle und Keinen", 
+                        author: " Friedrich Nietzsche", pages: 302, status: "not read"},
+                        {title: "Robinsoe Crusoe", author: "Daniel Dafoe", pages: 320, status:"not read"}     
+];
 
 let myLibrary = [];
 
@@ -82,12 +92,26 @@ function displayOnPage() {
 }
 
 window.addEventListener("DOMContentLoaded", (event)=>{
-    let defaultTitle = "The Posthumous Memoirs of Brás Cubas";
-    let defaultAuthor = "Machado de Assis";
-    let defaultPages = 238;
-    let defaultStatus = "read";
-    let defaultBook = new Book(defaultTitle, defaultAuthor, defaultPages, defaultStatus);
-    myLibrary.push(defaultBook);
+    let defaultTitle, defaultAuthor, defaultPages, defaultStatus, defaultBook;
+
+    for (let obj of DEFAULT_BOOKS) {
+        for (let key in obj) {
+            if (key === "title") {
+                defaultTitle = obj[key]
+            }
+            else if (key === "author") {
+                defaultAuthor = obj[key]
+            }
+            else if (key === "pages") {
+                defaultPages = obj[key];
+            }
+            else {
+                defaultStatus = obj[key];
+            }
+        }
+        defaultBook = new Book(defaultTitle, defaultAuthor, defaultPages, defaultStatus);
+        myLibrary.push(defaultBook);
+    }
     displayOnPage();
 });
 
