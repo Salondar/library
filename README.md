@@ -6,4 +6,4 @@ A simple library web app, part of the Odin Project.
 
 # Inspiration 
 
-The Table styles were inspired by Adrian Roselli (article)[https://adrianroselli.com/2017/11/a-responsive-accessible-table.html]
+The Table styles were inspired by Adrian Roselli's [article](https://adrianroselli.com/2017/11/a-responsive-accessible-table.html)
