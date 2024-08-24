@@ -120,6 +120,14 @@ openModal.addEventListener('click', ()=> {
     modal.showModal();
 });
 
+function removeInvalid() {
+    title.parentElement.classList.remove("invalid");
+    author.parentElement.classList.remove("invalid");
+    pageCount.parentElement.classList.remove("invalid");
+    title.placeholder = "";
+    author.placeholder = "";
+    pageCount.placeholder = "";
+}
 
 addBookBtn.addEventListener('click', (event)=> {
     event.preventDefault();
@@ -131,18 +139,19 @@ addBookBtn.addEventListener('click', (event)=> {
     if (form.checkValidity() === false) {
         if (title.checkValidity() === false) {
             title.placeholder = "Enter book title";
-            title.style.borderColor = "red";
+           title.parentElement.classList.add("invalid");
         }
         else if (author.checkValidity() === false) {
             author.placeholder = "Enter an author name";
-            author.style.borderColor = "red";
+            author.parentElement.classList.add("invalid");
         }
         else if (pageCount.checkValidity() === false) {
             pageCount.placeholder = "Enter the number of pages";
-            pageCount.style.borderColor = "red";
+            pageCount.parentElement.classList.add("invalid");
         }
     }
     else {
+        removeInvalid();
         newTitle = title.value;
         newAuthor = author.value;
         newPageCount = pageCount.value;
@@ -154,15 +163,7 @@ addBookBtn.addEventListener('click', (event)=> {
 });
 
 cancelBtn.addEventListener('click', (event)=> {
-    // Remove the invalid border color
-    title.style.borderColor = "black";
-    author.style.borderColor = "black";
-    pageCount.style.borderColor = "black";
-
-    // Remove the invalid placeholder text
-    title.placeholder = "";
-    author.placeholder = "";
-    pageCount.placeholder = "";
+    removeInvalid();
 });
 
 // Close modal
