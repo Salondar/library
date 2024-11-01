@@ -22,22 +22,23 @@ const DEFAULT_BOOKS = [{title: "The Posthumous Memoirs of Brás Cubas",
 
 let myLibrary = [];
 
-// Book constructor
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-}
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;   
+    }
 
-Book.prototype.changeStatus = function() {
-    if (this.status === 'read') {
-        this.status = 'not read';
+    changeStatus() {
+        if (this.status === 'read') {
+            this.status = 'not read';
+        }
+        else {
+            this.status = 'read';
+        }
     }
-    else {
-        this.status = 'read';
-    }
-};
+}
 
 function addToLibrary(book) {
     myLibrary.push(book);
